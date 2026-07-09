@@ -558,6 +558,37 @@ a{ color:inherit; }
 .road-card.lv-medium .rd-tag{ background: rgba(201,123,90,.2); color:#a85c3c; }
 .road-card .rd-note{ font-size:12px; color:var(--ink-soft); line-height:1.75; }
 
+/* ============================================================
+   装备页 & 每日拍摄机位
+   ============================================================ */
+.gear-card{background:var(--paper-3);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);padding:18px;margin-bottom:16px;position:relative;overflow:hidden}
+.gear-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gc,#2E6C8E)}
+.gear-card h3{font-size:16px;margin:0 0 3px;padding-left:6px}
+.gear-card .role{font-size:11.5px;color:var(--ink-soft);padding-left:6px;margin-bottom:12px}
+.gear-sec{font-size:11px;font-weight:700;color:var(--lake-deep);margin:10px 0 5px;padding-left:6px}
+.gear-ops{list-style:none;margin:0;padding:0 0 0 6px}
+.gear-ops li{font-size:12.5px;color:var(--ink);line-height:1.6;padding:3px 0 3px 16px;position:relative}
+.gear-ops li::before{content:"·";position:absolute;left:4px;color:var(--clay);font-weight:900}
+.gear-set{font-size:12px;color:var(--ink-soft);line-height:1.7;background:var(--paper-2);
+  border-radius:12px;padding:10px 12px;margin:2px 6px 0}
+.gear-best{font-size:12px;color:var(--steppe);font-weight:700;padding:8px 6px 0}
+.drone-warn{background:rgba(201,123,90,.12);border:2px dashed rgba(201,123,90,.45);border-radius:14px;
+  padding:14px 16px;font-size:12.5px;color:#a85c3c;line-height:1.7;font-weight:600;margin-top:6px}
+.checklist{list-style:none;margin:0;padding:0}
+.checklist li{display:flex;gap:10px;align-items:flex-start;font-size:13px;padding:9px 0;
+  border-bottom:1px dashed var(--line);color:var(--ink)}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:"☐";color:var(--road);font-size:17px;flex:0 0 auto;line-height:1.2}
+
+/* 每日拍摄机位 */
+.shoot-item{background:var(--paper-3);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:13px 15px;margin-bottom:10px}
+.shoot-head{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;margin-bottom:5px}
+.shoot-head .cam{width:18px;height:18px;color:var(--clay);flex:0 0 auto}
+.shoot-what{font-size:11.5px;color:var(--clay);font-weight:700;margin-bottom:4px}
+.shoot-how{font-size:12px;color:var(--ink-soft);line-height:1.7}
+
 </style>
 <!-- Leaflet 开源地图（真实地理坐标，无需 API Key） -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -1256,7 +1287,14 @@ const ROUTE_DATA = {
         "tag": "轿车友好",
         "level": "easy",
         "note": "伊宁→赛里木湖全程高速+国道，路况好。注意傍晚逆光驾驶和果子沟隧道群限速。"
-      }
+      },
+      "shootSpots": [
+        {
+          "spot": "赛里木湖东岸",
+          "what": "落日+湖面",
+          "how": "Leica收f/8拍蓝调湖面；Pocket延时记录日落；无人机（报备后）拍环湖公路，注意阵风"
+        }
+      ]
     },
     {
       "id": "D2",
@@ -1361,7 +1399,24 @@ const ROUTE_DATA = {
         "tag": "轿车友好",
         "level": "easy",
         "note": "环湖公路为铺装路面，轿车无压力。环湖限速较低，注意景区内牛羊横穿马路。"
-      }
+      },
+      "shootSpots": [
+        {
+          "spot": "赛里木湖环湖",
+          "what": "晨雾镜面湖",
+          "how": "清晨湖面最静，Leica拍倒影；无人机俯拍湖心蓝，半径≤500m"
+        },
+        {
+          "spot": "果子沟大桥",
+          "what": "盘山桥梁",
+          "how": "观景台Leica长构图；无人机拍大桥与山谷（先确认非禁飞）"
+        },
+        {
+          "spot": "霍城薰衣草",
+          "what": "紫色花田",
+          "how": "Leica f/1.7浅景深拍人像；Pocket贴地移动拍花海"
+        }
+      ]
     },
     {
       "id": "D3",
@@ -1465,7 +1520,24 @@ const ROUTE_DATA = {
         "tag": "轿车可行 · 山路驾驶",
         "level": "medium",
         "note": "伊昭公路为盘山公路，弯多坡陡，轿车可通行但需谨慎驾驶，新手建议慢行。每年10月至次年5月封路，7月正常通行，出发当天建议再确认是否临时管制。"
-      }
+      },
+      "shootSpots": [
+        {
+          "spot": "伊昭公路垭口",
+          "what": "盘山发卡弯",
+          "how": "无人机航拍最出片！拍车辆盘山（避开边境哨所）；Pocket车内延时"
+        },
+        {
+          "spot": "昭苏草原",
+          "what": "油菜花/雪山",
+          "how": "Leica拍雪山草原大片；一家人背影入镜更有故事感"
+        },
+        {
+          "spot": "夏塔溪流雪山",
+          "what": "雪山云杉",
+          "how": "Leica拍雪峰；Pocket拍溪流慢动作4K/240fps；轻徒步背影"
+        }
+      ]
     },
     {
       "id": "D4",
@@ -1542,7 +1614,19 @@ const ROUTE_DATA = {
         "tag": "轿车可行 · 末段窄路",
         "level": "medium",
         "note": "琼库什台进村最后一段为山区窄路，会车需留意。雨后可能有泥泞，建议白天通行，避免夜路。"
-      }
+      },
+      "shootSpots": [
+        {
+          "spot": "琼库什台村",
+          "what": "炊烟木屋",
+          "how": "傍晚Leica拍炊烟+夕照木屋；村后草坡无人机俯拍全村（先问报备）"
+        },
+        {
+          "spot": "草坡牧场",
+          "what": "牛羊牧归",
+          "how": "Pocket跟拍孩子与牛羊互动；Leica抓拍牧归瞬间"
+        }
+      ]
     },
     {
       "id": "D5",
@@ -1623,7 +1707,19 @@ const ROUTE_DATA = {
         "tag": "轿车友好 · 景区换乘",
         "level": "easy",
         "note": "喀拉峻景区内需换乘区间车，自驾车停游客中心。琼库什台→喀拉峻段部分为山路，正常驾驶即可。"
-      }
+      },
+      "shootSpots": [
+        {
+          "spot": "喀拉峻草原",
+          "what": "光影草原",
+          "how": "晨光侧照草原山脊最出片（俗称人体草原）；无人机需报备后飞；Leica拍光影带"
+        },
+        {
+          "spot": "特克斯八卦城",
+          "what": "八卦街巷",
+          "how": "无人机俯拍八卦城全貌最震撼（县城核心禁飞需确认）；夜市Pocket扫街"
+        }
+      ]
     },
     {
       "id": "D6",
@@ -1706,7 +1802,14 @@ const ROUTE_DATA = {
         "tag": "轿车友好",
         "level": "easy",
         "note": "特克斯→伊宁为国道+高速，路况好。预留还车和值机缓冲时间即可。"
-      }
+      },
+      "shootSpots": [
+        {
+          "spot": "返程沿途",
+          "what": "随手记录",
+          "how": "Pocket车窗延时收尾；有好光线随时停车Leica补几张"
+        }
+      ]
     }
   ],
   "driveTable": [
@@ -1932,6 +2035,57 @@ const ROUTE_DATA = {
     "qiongkushitai": "琼库什台",
     "kalajun": "喀拉峻",
     "tekes": "特克斯八卦城"
+  },
+  "gear": {
+    "intro": "本次旅拍三件套：口袋机拍动态、徕卡拍大片、无人机拍天空。装备清单、参数、以及每天的拍摄机位都在这一页。",
+    "kit": [
+      {
+        "name": "DJI Osmo Pocket 4P",
+        "role": "双摄口袋云台 · 视频主力",
+        "color": "#2E6C8E",
+        "ops": [
+          "旋屏开机，屏下键切广角/中焦",
+          "上滑设参数、左滑调画质，PRO档高级设置",
+          "107GB内置存储，不怕忘带卡"
+        ],
+        "settings": "常用4K/60fps；慢动作4K/240fps；大光比开10-bit D-Log；2x无损变焦+智能跟随；强光配ND镜",
+        "best": "边走边拍、车载延时、亲子vlog、空间音频收环境声"
+      },
+      {
+        "name": "Leica Q2",
+        "role": "全画幅定焦 · 照片出片",
+        "color": "#8B5E3C",
+        "ops": [
+          "顶部电源拨杆开机",
+          "28mm定焦靠走位构图，可机内裁35/50",
+          "存DNG+JPG，后期空间大"
+        ],
+        "settings": "光圈优先(A)最省心；风光f/8、人像f/1.7；ISO自动上限；开启防抖",
+        "best": "风光大片、人文街拍、氛围人像，德味色彩耐看"
+      },
+      {
+        "name": "DJI Mavic 4 Pro",
+        "role": "航拍无人机 · 上帝视角",
+        "color": "#4A4238",
+        "ops": [
+          "展桨→长按开机→等GPS良好再起飞",
+          "先原地悬停确认稳定",
+          "返航高度设高于周围山体"
+        ],
+        "settings": "视频4K；智能跟随/一键短片拍车队；留返航电量30%；高原电池保暖",
+        "best": "草原/湖泊/盘山公路大场面、车队追焦——务必先报备"
+      }
+    ],
+    "checklist": [
+      "三机电池全部充满 + 备用电池贴身保暖",
+      "存储卡够大够快，每天导出备份",
+      "ND镜/滤镜、镜头布、清洁布",
+      "无人机实名登记二维码 + 身份证（报备用）",
+      "各种充电线、车充、充电宝",
+      "防风防尘：换镜避扬尘，Q2防进沙",
+      "还机前清点配件，检查有无磕碰"
+    ],
+    "droneWarn": "新疆飞无人机必须先报备！赛里木湖等敏感区扫码登记，机场/边境/县城核心区禁飞，违规没收+罚款。详见单独的《无人机禁飞速查》图。"
   }
 };
 </script>
@@ -1960,6 +2114,7 @@ const TABS = [
   { id:'drives', label:'车程', icn:'car' },
   { id:'weather', label:'天气', icn:'sunw' },
   { id:'gallery', label:'插画', icn:'brush' },
+  { id:'gear', label:'装备', icn:'camera' },
   { id:'emergency', label:'应急', icn:'shield' },
   { id:'risk', label:'Plan B', icn:'warning' },
 ];
@@ -2421,6 +2576,15 @@ function renderDay(dayIdx){
     </div>
   </div>` : '';
 
+  const shootBlock = (d.shootSpots && d.shootSpots.length) ? `
+  <div class="section-title">今日拍摄机位</div>
+  ${d.shootSpots.map(sp=>`
+    <div class="shoot-item">
+      <div class="shoot-head"><span class="cam">${ICON.camera}</span>${sp.spot}</div>
+      <div class="shoot-what">拍：${sp.what}</div>
+      <div class="shoot-how">${sp.how}</div>
+    </div>`).join('')}` : '';
+
   const gamesBlock = (d.carGames && d.carGames.length) ? `
   <div class="section-title">车上不无聊</div>
   <div class="game-card">
@@ -2485,6 +2649,7 @@ function renderDay(dayIdx){
   ${roadBlock}
   ${foodBlock}
   ${photoBlock}
+  ${shootBlock}
   ${gamesBlock}
 
   ${hotel ? `
@@ -2643,6 +2808,45 @@ function afterRenderPacking(root){
   });
 }
 
+
+/* ---------------- 页面渲染：装备与拍摄 ---------------- */
+
+function renderGear(){
+  const g = ROUTE_DATA.gear;
+  if(!g) return `${threadHeader('装备')}<div class="section-title" style="margin-top:6px">装备</div><div class="card">本路书未配置装备信息。</div>`;
+  const kits = g.kit.map(k=>`
+    <div class="gear-card" style="--gc:${k.color}">
+      <h3>${k.name}</h3>
+      <div class="role">${k.role}</div>
+      <div class="gear-sec">操作</div>
+      <ul class="gear-ops">${k.ops.map(o=>`<li>${o}</li>`).join('')}</ul>
+      <div class="gear-sec">推荐设置</div>
+      <div class="gear-set">${k.settings}</div>
+      <div class="gear-best">🌟 ${k.best}</div>
+    </div>`).join('');
+  return `
+  ${threadHeader('随身装备')}
+  <div class="section-title" style="margin-top:6px">装备与拍摄</div>
+  <div class="section-sub">${g.intro}</div>
+  ${kits}
+  ${g.droneWarn ? `<div class="section-title">无人机注意</div><div class="drone-warn">${icon('warning',15)} ${g.droneWarn}</div>` : ''}
+  <div class="section-title">行前装备清单</div>
+  <div class="card"><ul class="checklist">${g.checklist.map(c=>`<li>${c}</li>`).join('')}</ul></div>
+  <div class="section-title">每天拍什么？</div>
+  <div class="section-sub">下面按天列出机位建议，详情也在每天的 D 页里</div>
+  ${ROUTE_DATA.days.map((d,i)=> d.shootSpots ? `
+    <div class="card">
+      <div style="font-weight:700;font-size:14px;color:${d.colorTag};margin-bottom:8px">D${i+1} · ${d.date}</div>
+      ${d.shootSpots.map(sp=>`
+        <div class="shoot-item">
+          <div class="shoot-head"><span class="cam">${ICON.camera}</span>${sp.spot}</div>
+          <div class="shoot-what">拍：${sp.what}</div>
+          <div class="shoot-how">${sp.how}</div>
+        </div>`).join('')}
+    </div>` : '').join('')}
+  `;
+}
+
 /* ---------------- 页面渲染：应急信息 ---------------- */
 
 function renderEmergency(){
@@ -2680,6 +2884,7 @@ const RENDERERS = {
   plan: { html: renderPlan, after: null },
   ...Object.fromEntries(ROUTE_DATA.days.map((d,i)=>[`d${i}`, { html: ()=>renderDay(i), after: (root)=>afterRenderDay(root,i) }])),
   packing: { html: renderPacking, after: afterRenderPacking },
+  gear: { html: renderGear, after: null },
   emergency: { html: renderEmergency, after: null },
   hotels: { html: renderHotels, after: null },
   drives: { html: renderDrives, after: null },
