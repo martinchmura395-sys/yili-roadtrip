@@ -130,10 +130,40 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opa
 .lightbox .lb-count{position:absolute;bottom:26px;color:rgba(246,241,228,.6);
   font-family:'Caveat',cursive;font-size:19px}
 
+/* ================= 序章 & 行前时间线 ================= */
+.prologue{padding:76px 0 30px}
+.pro-card{background:var(--paper-3);border:1px solid var(--line);border-radius:20px;
+  padding:30px 28px;font-family:'Noto Serif SC',serif;font-size:14.5px;line-height:2.2;position:relative}
+.pro-card .big-quote{font-family:'Ma Shan Zheng',cursive;font-size:26px;color:var(--clay);
+  display:block;margin-bottom:14px;line-height:1.6}
+.prep{padding:50px 0 30px}
+.prep-item{position:relative;padding:0 0 34px 34px;border-left:2.5px dashed rgba(74,66,56,.25);margin-left:8px}
+.prep-item:last-child{border-left-color:transparent}
+.prep-item::before{content:"";position:absolute;left:-8px;top:2px;width:13px;height:13px;border-radius:50%;
+  background:var(--pc,#2E6C8E);border:3px solid var(--paper)}
+.prep-item .pw{font-family:'Caveat',cursive;font-size:19px;color:var(--pc,#2E6C8E);font-weight:700}
+.prep-item .pt{font-size:15px;font-weight:700;margin:3px 0 7px}
+.prep-item .pd{font-size:13px;color:var(--ink-soft);line-height:1.95;font-family:'Noto Serif SC',serif}
+.prep-item.storm{background:linear-gradient(135deg,rgba(74,66,56,.05),rgba(46,108,142,.08));
+  border-radius:0 18px 18px 0;padding-top:16px;padding-right:18px;padding-bottom:20px;margin-bottom:14px}
+.prep-item.storm .pd b{color:var(--lake-deep)}
+.prep-link{display:inline-flex;align-items:center;gap:6px;margin-top:10px;text-decoration:none;
+  font-size:12px;font-weight:700;color:var(--lake-deep);background:rgba(46,108,142,.1);
+  border:1px solid rgba(46,108,142,.3);padding:8px 16px;border-radius:999px}
+/* ================= 装备 ================= */
+.gearsec{padding:50px 0 40px}
+.gear-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.g-card{background:var(--paper-3);border:1px solid var(--line);border-radius:18px;padding:20px 16px;
+  text-align:center;position:relative;overflow:hidden}
+.g-card::after{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--gc,#2E6C8E)}
+.g-card .ge{font-size:30px;margin-bottom:8px}
+.g-card .gn{font-size:13.5px;font-weight:900;line-height:1.4}
+.g-card .gr{font-size:10.5px;color:var(--road);margin-top:5px;letter-spacing:.04em;line-height:1.5}
 @media(min-width:560px){
   .gallery{grid-template-columns:repeat(3,1fr)}
   .gallery .ph.wide{grid-column:span 3;aspect-ratio:21/9}
   .stats .grid{grid-template-columns:repeat(4,1fr)}
+  .gear-grid{grid-template-columns:repeat(4,1fr)}
 }
 </style>
 </head>
@@ -151,21 +181,74 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opa
   <div class="scroll-hint">↓ 往下翻，故事开始了 ↓</div>
 </section>
 
-<!-- 数据带 -->
-<section class="stats">
+
+<!-- 序章 -->
+<section class="prologue">
   <div class="wrap">
     <div class="sec-title reveal">
-      <div class="cav-top">the journey in numbers</div>
-      <h2>这趟旅程</h2>
+      <div class="cav-top">prologue</div>
+      <h2>序 · 为什么出发</h2>
     </div>
-    <div class="grid">
-      <div class="stat reveal"><div class="num" data-count="6">0</div><div class="lbl">天</div></div>
-      <div class="stat reveal"><div class="num" data-count="1200">0</div><div class="lbl">公里自驾</div></div>
-      <div class="stat reveal"><div class="num" data-count="2073">0</div><div class="lbl">米 · 最高住宿海拔</div></div>
-      <div class="stat reveal"><div class="num" data-count="4">0</div><div class="lbl">个人 · 一家</div></div>
+    <div class="pro-card reveal">
+      <span class="big-quote">"想带家人看一次真正的大山大湖。"</span>
+      于是选定了伊犁——赛里木湖的蓝、喀拉峻的绿、伊昭公路的九曲十八弯。六天,一台车,一家人,还有三台相机和一架无人机。这不只是一次旅行,更像是一场提前一个月就开始的、全家人共同期待的仪式。
     </div>
   </div>
 </section>
+
+<!-- 行前准备 -->
+<section class="prep">
+  <div class="wrap">
+    <div class="sec-title reveal">
+      <div class="cav-top">before we go</div>
+      <h2>行前 · 准备的日子</h2>
+    </div>
+    <div class="prep-item reveal" style="--pc:#2E6C8E">
+      <div class="pw">六月末 · 起意</div>
+      <div class="pt">定下伊犁六日环线</div>
+      <div class="pd">翻了无数攻略,最终画出一条不走回头路的小环线:伊宁落地,赛里木湖进,特克斯出。每一晚住哪、每一段开多久,都反复推敲过。</div>
+    </div>
+    <div class="prep-item reveal" style="--pc:#C97B5A">
+      <div class="pw">七月初 · 手作</div>
+      <div class="pt">亲手做了一本电子路书</div>
+      <div class="pd">不想拿着几十页文档上路,干脆做了一本手绘手账风的电子路书——能导航、能看实时天气、能勾清单、能每天打卡。一条链接,全家共用。</div>
+      <a class="prep-link" href="https://martinchmura395-sys.github.io/yili-roadtrip/" target="_blank">翻开这本路书 →</a>
+    </div>
+    <div class="prep-item reveal" style="--pc:#6B7A45">
+      <div class="pw">七月上旬 · 研究</div>
+      <div class="pt">把13个机位一个个查清楚</div>
+      <div class="pd">点将台的日落要提前半小时到位、喀拉峻的侧光在19点后、八卦城航拍得先去警务站报备……做了一本可以翻页的摄影机位手册,只等到现场按图索骥。</div>
+      <a class="prep-link" href="https://martinchmura395-sys.github.io/yili-roadtrip/photo-guide.html" target="_blank">摄影机位手册 →</a>
+    </div>
+    <div class="prep-item storm reveal" style="--pc:#1F4E68">
+      <div class="pw">7月9日 · 插曲</div>
+      <div class="pt">超强台风"巴威"来了</div>
+      <div class="pd">出发前三天,17级的超强台风直扑东南沿海,登陆窗口正卡在我们起飞前夜。那两天把台风路径图刷了一遍又一遍,盯着 <b>9:55 那班春秋航空</b>——好在它的历史准点率是96%,好在我们订的是早班机。</div>
+    </div>
+    <div class="prep-item reveal" style="--pc:#8B5E3C">
+      <div class="pw">7月11日 · 收拾行囊</div>
+      <div class="pt">三台相机塞进一个背包</div>
+      <div class="pd">无人机电池全部随身、充电宝贴身保暖;给老人画了一张大字穿衣图:"早晚很凉,中午很热,穿得像洋葱,一层一层。"晚上把路书发进家庭群,每个人都点开存好——出发。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 装备 -->
+<section class="gearsec">
+  <div class="wrap">
+    <div class="sec-title reveal">
+      <div class="cav-top">companions</div>
+      <h2>同行的伙伴</h2>
+    </div>
+    <div class="gear-grid">
+      <div class="g-card reveal" style="--gc:#2E6C8E"><div class="ge">🎥</div><div class="gn">Osmo Pocket 4P</div><div class="gr">双摄口袋云台<br>动态视频主力</div></div>
+      <div class="g-card reveal" style="--gc:#8B5E3C"><div class="ge">📷</div><div class="gn">Leica Q2</div><div class="gr">全画幅定焦<br>大片与合影</div></div>
+      <div class="g-card reveal" style="--gc:#4A4238"><div class="ge">🚁</div><div class="gn">Mavic 4 Pro</div><div class="gr">上帝视角<br>先报备再起飞</div></div>
+      <div class="g-card reveal" style="--gc:#6B7A45"><div class="ge">🚐</div><div class="gn">梦想家 PHEV</div><div class="gr">插混MPV<br>1200km的家</div></div>
+    </div>
+  </div>
+</section>
+
 
 <!-- 六天章节 -->
 <section class="journey">
@@ -175,6 +258,22 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opa
       <h2>六天 · 六章</h2>
     </div>
     <div id="chapters"></div>
+  </div>
+</section>
+
+<!-- 数据带 -->
+<section class="stats">
+  <div class="wrap">
+    <div class="sec-title reveal">
+      <div class="cav-top">the journey in numbers</div>
+      <h2>用数字记住它</h2>
+    </div>
+    <div class="grid">
+      <div class="stat reveal"><div class="num" data-count="6">0</div><div class="lbl">天</div></div>
+      <div class="stat reveal"><div class="num" data-count="1200">0</div><div class="lbl">公里自驾</div></div>
+      <div class="stat reveal"><div class="num" data-count="2073">0</div><div class="lbl">米 · 最高住宿海拔</div></div>
+      <div class="stat reveal"><div class="num" data-count="4">0</div><div class="lbl">个人 · 一家</div></div>
+    </div>
   </div>
 </section>
 
@@ -198,7 +297,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opa
   <div class="wrap reveal">
     <div class="mark">🧵</div>
     <h2>山川湖海<br>都缝进了这本手账里</h2>
-    <div class="sign">— 爸爸 · 妈妈 · 哥哥 · 妹妹 —</div>
+    <div class="sign">— 山高路远 · 一起走过 —</div>
     <div class="brand">
       <span class="hand">旅书手帖</span><br>
       MADE WITH LOVE · YILI 2026
